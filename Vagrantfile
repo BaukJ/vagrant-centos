@@ -54,9 +54,9 @@ Vagrant.configure("2") do |config|
 	# # # Forward on specific USBs
 	
 	# # This forwards on all, but only once booted
-    vb.customize ["modifyvm", :id, "--usb", "on"]
-    vb.customize ["modifyvm", :id, "--usbehci", "on"]
-    vb.customize ["modifyvm", :id, "--usbxhci", "on"]
+    #vb.customize ["modifyvm", :id, "--usb", "on"]
+    #vb.customize ["modifyvm", :id, "--usbehci", "on"]
+    #vb.customize ["modifyvm", :id, "--usbxhci", "on"]
 	# # TODO: This should just forward on the specified usb
 	#vb.customize ['usbfilter', 'add', '1', '--target', :id, '--name', "USBFASTP",
 	#	'--vendorid',  '0x13fe',
