@@ -35,14 +35,15 @@ Vagrant.configure("2") do |config|
   # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
   # Create a private network, which allows host-only access to the machine using a specific IP.
-  config.vm.network "private_network", ip: "127.0.0.2"
+  config.vm.network "private_network", ip: "192.168.222.222"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
 
-  config.vm.synced_folder "../share/linux", "/SHARE"
+  #config.vm.synced_folder "../share/linux", "/SHARE", type: "rsync" # Can change to smb for faster performance
+  config.vm.synced_folder "../share/linux", "/SHARE" #, type: "smb" # Can change to smb for faster performance
 
   config.vm.provider "virtualbox" do |vb|
    # Display the VirtualBox GUI when booting the machine
@@ -57,6 +58,9 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--usb", "on"]
     vb.customize ["modifyvm", :id, "--usbehci", "on"]
     vb.customize ["modifyvm", :id, "--usbxhci", "on"]
+	# # Add datasur
+	# vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'USB', '--vendorid', '0x2d9b', '--productid', '0x2d9b']
+	
 	# # TODO: This should just forward on the specified usb
 	#vb.customize ['usbfilter', 'add', '1', '--target', :id, '--name', "USBFASTP",
 	#	'--vendorid',  '0x13fe',
