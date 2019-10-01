@@ -42,8 +42,7 @@ Vagrant.configure("2") do |config|
   # your network.
   # config.vm.network "public_network"
 
-  #config.vm.synced_folder "../share/linux", "/SHARE", type: "rsync" # Can change to smb for faster performance
-  config.vm.synced_folder "../share/linux", "/SHARE" #, type: "smb" # Can change to smb for faster performance
+  config.vm.synced_folder "../share/linux", "/SHARE" #, type: "rsync" # Can change to smb for faster performance
 
   config.vm.provider "virtualbox" do |vb|
    # Display the VirtualBox GUI when booting the machine
