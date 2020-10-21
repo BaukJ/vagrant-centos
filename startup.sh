@@ -11,7 +11,12 @@ do
 	[[ "$ans" == "u" ]] && ans=up
 	[[ "$ans" == "h" ]] && ans=halt
 	[[ "$ans" == "p" ]] && ans="up --provision"
-	echo "########## RUNNING : vagrant $ans"
-	vagrant $ans
+	if [[ "$ans" == "" ]]
+	then
+		echo "########## NO ARGS PASSED TO VAGRANT"
+	else
+		echo "########## RUNNING : vagrant $ans"
+		vagrant $ans
+	fi
 done
 

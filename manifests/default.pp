@@ -1,3 +1,5 @@
+# Your username and publis sshe key goes in here.
+# The public ssh key is without the ssh-rsa bit.
 
 $user = 'user' # TODO: Put in username here (externalise)
 # TODO: insert your ssh keys below, in the format: "ssh_key_here==",

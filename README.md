@@ -3,7 +3,6 @@
 ## Getting started
 
 To start the instance, edit manifests/default.pp to add in your UID and your ssh keys.
-You then need to create the following folder for the share: ../share/linux
 Then run, from the root folder:
 
 `vagrant up`

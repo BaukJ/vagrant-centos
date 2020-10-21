@@ -15,6 +15,13 @@ gui = false
 #  end
 #end
 
+def load_usbs(vb)
+  # This forwards on all, but only once booted
+  vb.customize ["modifyvm", :id, "--usb", "on"]
+  vb.customize ["modifyvm", :id, "--usbehci", "on"]
+  vb.customize ["modifyvm", :id, "--usbxhci", "on"]
+end
+
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
 
@@ -42,7 +49,8 @@ Vagrant.configure("2") do |config|
   # your network.
   # config.vm.network "public_network"
 
-  config.vm.synced_folder "../share/linux", "/SHARE" #, type: "rsync" # Can change to smb for faster performance
+  # If you have virtualbox additions and want to export the share
+  #config.vm.synced_folder "../share/linux", "/SHARE" #, type: "rsync" # Can change to smb for faster performance
 
   config.vm.provider "virtualbox" do |vb|
    # Display the VirtualBox GUI when booting the machine
@@ -51,14 +59,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "4096"
     vb.cpus = 2
     vb.customize ["modifyvm", :id, "--vram", "64"]
-	# # # Forward on specific USBs
-	
-	# # This forwards on all, but only once booted
-    vb.customize ["modifyvm", :id, "--usb", "on"]
-    vb.customize ["modifyvm", :id, "--usbehci", "on"]
-    vb.customize ["modifyvm", :id, "--usbxhci", "on"]
-	# # Add datasur
-	# vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'USB', '--vendorid', '0x2d9b', '--productid', '0x2d9b']
+    # load_usbs vb
 	
 	# # TODO: This should just forward on the specified usb
 	#vb.customize ['usbfilter', 'add', '1', '--target', :id, '--name', "USBFASTP",
